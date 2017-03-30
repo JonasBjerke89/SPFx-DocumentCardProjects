@@ -13,11 +13,14 @@ import { DocumentCard,
  import ProjectCard from './ProjectCard';
  import Project from './Project';
 
-export default class Projects extends React.Component<IProjectsProps, void> {  
+export default class Projects extends React.Component<IProjectsProps, void> {
   public render(): React.ReactElement<IProjectsProps> {    
+    let css = "<style>html[dir=ltr] .pageContent_2f716fec { eft:0px; } .pageContent_2f716fec { 	width:100%; } .Canvas { max-width:none; } </style>";
+    const viewMode = <span dangerouslySetInnerHTML={{ __html: css }}></span>;
+
     let projects = new Array<Project>(0);
 
-    for(let i = 0; i<25; i++)
+    for(let i = 0; i<this.props.count; i++)
     {
       let p = new Project();
         p.acronym = "P" + i;
@@ -42,6 +45,7 @@ export default class Projects extends React.Component<IProjectsProps, void> {
  
     return (      
         <div className={styles.outerwrapper}>
+        {viewMode}        
           {
             projects.map((val, index, array) =>
             {
@@ -56,7 +60,8 @@ export default class Projects extends React.Component<IProjectsProps, void> {
                 link={val.link}
               />
             })
-          }
+          }          
+          
         </div>
     );
   }

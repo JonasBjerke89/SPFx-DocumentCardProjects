@@ -4,7 +4,8 @@ import { Version } from '@microsoft/sp-core-library';
 import {
   BaseClientSideWebPart,
   IPropertyPaneConfiguration,
-  PropertyPaneTextField
+  PropertyPaneTextField,
+  PropertyPaneSlider
 } from '@microsoft/sp-webpart-base';
 
 import * as strings from 'projectsStrings';
@@ -14,11 +15,12 @@ import { IProjectsWebPartProps } from './IProjectsWebPartProps';
 
 export default class ProjectsWebPart extends BaseClientSideWebPart<IProjectsWebPartProps> {
 
-  public render(): void {
+  public render(): void {    
     const element: React.ReactElement<IProjectsProps > = React.createElement(
       Projects,
       {
-        description: this.properties.description
+        description: this.properties.description,
+        count: this.properties.count
       }
     );
 
@@ -42,6 +44,11 @@ export default class ProjectsWebPart extends BaseClientSideWebPart<IProjectsWebP
               groupFields: [
                 PropertyPaneTextField('description', {
                   label: strings.DescriptionFieldLabel
+                }),
+                PropertyPaneSlider('count', {
+                  label: "Count",
+                  min: 0,
+                  max: 100
                 })
               ]
             }
