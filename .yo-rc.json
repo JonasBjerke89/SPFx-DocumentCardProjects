@@ -1,0 +1,8 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "libraryName": "sp-fx-document-card-projects",
+    "framework": "react",
+    "version": "1.0.0",
+    "libraryId": "915b9382-192c-4f38-bc68-6fe7338fd165"
+  }
+}
